@@ -1,0 +1,14 @@
+[package]
+name = "roapi-rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[patch.crates-io]
+ari = { git = "https://github.com/discord/ari", branch = "remove-nightly-features" }
+
+[dependencies]
+ari = "0.0.5"
+lazy_static = "1"
+windows = { version = "0.34.0", features = ["Foundation"] }
