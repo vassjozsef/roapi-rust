@@ -2,12 +2,11 @@ use ari::os::win::{Library, Symbol};
 use lazy_static::lazy_static;
 use windows::core::HRESULT;
 
-#[cfg(all(target_pointer_width = "64", windows))]
 static WINRT_LIBRARY_NAME: &'static str = "api-ms-win-core-winrt-l1-1-0.dll";
 
 static WINRT_ROINITIALIZE_FUNCTION_NAME: &'static [u8; 13usize] = b"RoInitialize\0";
 
-pub type RoInitializeFn = unsafe extern "C" fn(initType: i32) -> i32;
+pub type RoInitializeFn = unsafe extern "system" fn(initType: i32) -> i32;
 
 fn invoke<TFn>(function: TFn) -> Result<(), HRESULT>
 where
